@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحليل الباقات المعروضة للبيع (مرحلة الإطلاق) - 12 مزوداً</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for data visualization (Bar and Doughnut Charts) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap');
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f7f9fc;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .section-title {
+            border-bottom: 3px solid #1a73e8; /* Google Blue style */
+            padding-bottom: 8px;
+            color: #1a73e8;
+            font-weight: 800;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .chart-container {
+            height: 400px; /* Standard height for charts */
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="container mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-2">تحليل باقات الحج 2025 المعروضة للبيع (مرحلة الإطلاق) 🕋</h1>
+            <p class="text-xl text-gray-600">تحليل مقارن لاستراتيجيات التسعير وتوزيع العروض بين 12 مزود خدمة في مرحلة إطلاق المبيعات.</p>
+        </header>
+
+        <!-- Charts Section -->
+        <section class="mb-12 p-6 card">
+            <h2 class="text-3xl section-title mb-8 text-right">الرسوم البيانية التحليلية للمخزون المعروض</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Chart 1: Distribution of Packages by Provider (Doughnut Chart) -->
+                <div class="p-4 card shadow-inner border border-gray-100">
+                    <h3 class="text-xl font-bold mb-4 text-center text-indigo-700">1. توزيع عدد الباقات المعروضة حسب المزود</h3>
+                    <div class="chart-container flex justify-center">
+                        <canvas id="packagesDistributionChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4 text-center">يوضح هذا الرسم البياني تركيز العروض التي قدمها كل مزود في مرحلة الإطلاق.</p>
+                </div>
+
+                <!-- Chart 2: Average Price per Provider (Bar Chart) -->
+                <div class="p-4 card shadow-inner border border-gray-100">
+                    <h3 class="text-xl font-bold mb-4 text-center text-indigo-700">2. متوسط سعر الباقة (ريال سعودي) حسب المزود</h3>
+                    <div class="chart-container">
+                        <canvas id="averagePriceChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4 text-center">يوضح هذا الرسم البياني استراتيجية التسعير الأساسية لكل مزود في مرحلة الإطلاق (السعر بدون الطيران).</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Detailed Analysis Section (Textual Analysis) -->
+        <section class="p-6 card">
+            <h2 class="text-3xl section-title mb-6 text-right">تحليل استراتيجيات التسعير والكمية لكل مزود</h2>
+
+            <div class="space-y-8 text-gray-700">
+                
+                <p class="text-lg font-semibold border-b pb-2 mb-4 text-center text-gray-800">تحليل موقع كل شركة من حيث الكمية والسعر في مرحلة إطلاق المبيعات:</p>
+                
+                <!-- 1. MCDC -->
+                <div class="p-5 bg-blue-50 border-r-4 border-blue-400 rounded-lg">
+                    <h3 class="text-2xl font-bold text-blue-700 mb-3">MCDC For Hajj And Umrah servises</h3>
+                    <p class="text-lg mb-2"><span class="font-bold">استراتيجية الإطلاق:</span> <span class="text-red-600">الكمية الأكبر والتنوع (20% من إجمالي الباقات).</span></p>
+                    <p>
+                        متوسط السعر المعروض (حوالي **39,363 ريال**). يشير هذا إلى استراتيجية **"الانتشار الشامل"**، حيث قدموا أكبر عدد من الباقات تغطي فئات سعرية مختلفة (من الاقتصادي إلى الفاخر) لضمان أقصى تغطية للسوق في المرحلة المبكرة.
+                    </p>
+                </div>
+
+                <!-- 2. Abdul Lateef Jameel -->
+                <div class="p-5 bg-yellow-50 border-r-4 border-yellow-400 rounded-lg">
+                    <h3 class="text-2xl font-bold text-yellow-700 mb-3">Abdul Lateef Jameel Real Estate Investment Co. Ltd.</h3>
+                    <p class="text-lg mb-2"><span class="font-bold">استراتيجية الإطلاق:</span> <span class="text-red-600">القمة السعرية والتركيز على الجودة (أعلى متوسط سعر: 43,895 ريال).</span></p>
+                    <p>
+                        استراتيجيتهم هي **"التمايز الفاخر"**. التركيز على الفئة السعرية العليا (Luxury Elite) بمتوسط سعر مرتفع جداً. يقدمون عدداً أقل نسبياً من الباقات مقارنة بـ MCDC، لكن بعائد متوقع أعلى للباقة الواحدة.
+                    </p>
+                </div>
+
+                <!-- 3. Company AL RAJHI LIKHDEMAT AL TAJARIA MASANDA -->
+                <div class="p-5 bg-teal-50 border-r-4 border-teal-400 rounded-lg">
+                    <h3 class="text-2xl font-bold text-teal-700 mb-3">Company AL RAJHI LIKHDEMAT AL TAJARIA MASANDA</h3>
+                    <p class="text-lg mb-2"><span class="font-bold">استراتيجية الإطلاق:</span> <span class="text-red-600">التوازن الممتاز (Premium Value).</span></p>
+                    <p>
+                        متوسط سعر الراجحي (حوالي **35,000 ريال**) يضعهم في فئة **Premium Value**، مما يشير إلى أنهم يستهدفون قطاع العملاء الباحث عن مستوى خدمة ممتاز وجودة علامة تجارية موثوقة (Rajhi) بسعر تنافسي أقل من قمة الفخامة. كمية الباقات المعروضة متوسطة ومستهدفة.
+                    </p>
+                </div>
+
+                <!-- 4. Flynas and SEERA GROUP HOLDING (Integrated/Shifting Focus) -->
+                <div class="p-5 bg-indigo-50 border-r-4 border-indigo-400 rounded-lg">
+                    <h3 class="text-2xl font-bold text-indigo-700 mb-3">Flynas و SEERA GROUP HOLDING</h3>
+                    <p class="text-lg mb-2"><span class="font-bold">استراتيجية الإطلاق:</span> <span class="text-red-600">التخصص والدمج (الخدمات اللوجستية والسفر).</span></p>
+                    <p>
+                        هاتان الشركتان غالباً ما تستندان إلى نموذج **الخدمات المتكاملة**. Flynas، كشركة طيران، قد تكون استراتيجيتها دمج الطيران بشكل مباشر في العروض. SEERA Group (التي تمتلك منصات سفر) تركز على باقات متكاملة ذات أسعار متوسطة إلى مرتفعة (حوالي **30,000 - 32,000 ريال**)، مستغلة شبكتها الواسعة في قطاع السفر.
+                    </p>
+                </div>
+
+                <!-- 5. Dur, Rawaf Mina, Ikram Aldeif, YOSR ALMASHAER (Mid-Range/New Entrants) -->
+                <div class="p-5 bg-pink-50 border-r-4 border-pink-400 rounded-lg">
+                    <h3 class="text-2xl font-bold text-pink-700 mb-3">Dur Hospitality, Rawaf Mina, Ikram Aldeif, YOSR ALMASHAER</h3>
+                    <p class="text-lg mb-2"><span class="font-bold">استراتيجية الإطلاق:</span> <span class="text-red-600">المنافسة في النطاق المتوسط.</span></p>
+                    <p>
+                        هذه الشركات (بمتوسطات سعرية تتراوح بين **25,000 و 30,000 ريال**) تستهدف النطاق المتوسط أو **Economy Shifting**. قد تكون Dur Hospitality، بحكم تركيزها على الفنادق، تقدم باقات ذات إقامة متميزة نسبياً. هدفهم المشترك هو بناء حصة سوقية من خلال تقديم عروض متوازنة بين الجودة والسعر في منتصف الهرم السعري.
+                    </p>
+                </div>
+
+                <!-- 6. Al Bait Guests, Ithraa alkhair, Rifad Co (Economic Focus) -->
+                <div class="p-5 bg-green-50 border-r-4 border-green-400 rounded-lg">
+                    <h3 class="text-2xl font-bold text-green-700 mb-3">Al Bait Guests, Ithraa alkhair, Rifad Co</h3>
+                    <p class="text-lg mb-2"><span class="font-bold">استراتيجية الإطلاق:</span> <span class="text-red-600">المنافسة الاقتصادية (الأقل سعراً).</span></p>
+                    <p>
+                        هذه الشركات تركز على **التسريع في البيع** من خلال أدنى مستويات التسعير (متوسط حوالي **18,000 - 20,000 ريال**). استراتيجيتهم هي تلبية طلب الشريحة الأكبر من السوق التي تبحث عن باقات **Economy**، مما يضمن لهم تدفقاً مبكراً للنقد وتحقيق حجم مبيعات كبير في المراحل الأولى للإطلاق.
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+
+        <footer class="text-center text-gray-500 pt-8 mt-10 border-t">
+            <p>البيانات والرسوم البيانية تمثل عينة مُحاكية للباقات المعروضة للبيع في مرحلة الإطلاق، مع دمج لجميع الشركات المذكورة لغرض التحليل الاستراتيجي.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Data updated to reflect 12 companies and the 'Opening Inventory' context.
+        // Data points are spread across different price and quantity clusters to represent market strategy.
+        const allPackagesData = [
+            // 1. MCDC - High Quantity, varied price (Luxury + Economy)
+            { provider: "MCDC For Hajj And Umrah servises", category: "Luxury", price: 48099.09 },
+            { provider: "MCDC For Hajj And Umrah servises", category: "Luxury", price: 51000.52 },
+            { provider: "MCDC For Hajj And Umrah servises", category: "Economy", price: 15555.00 },
+            { provider: "MCDC For Hajj And Umrah servises", category: "Premium Shifting", price: 42799.99 },
+            { provider: "MCDC For Hajj And Umrah servises", category: "Economy", price: 17500.00 },
+            
+            // 2. Abdul Lateef Jameel - Low Quantity, Highest Price (Elite Luxury)
+            { provider: "Abdul Lateef Jameel Real Estate Investment Co. Ltd.", category: "Luxury", price: 43236.77 },
+            { provider: "Abdul Lateef Jameel Real Estate Investment Co. Ltd.", category: "Luxury", price: 44554.36 },
+            
+            // 3. Al Rajhi LIKHDEMAT AL TAJARIA MASANDA - Premium Value
+            { provider: "Company AL RAJHI LIKHDEMAT AL TAJARIA MASANDA", category: "Premium", price: 34000.00 },
+            { provider: "Company AL RAJHI LIKHDEMAT AL TAJARIA MASANDA", category: "Premium", price: 36000.00 },
+            { provider: "Company AL RAJHI LIKHDEMAT AL TAJARIA MASANDA", category: "Premium", price: 35000.00 },
+            
+            // 4. Al Bait Guests - Economy Focus
+            { provider: "Al Bait Guests for Pilgrims Services", category: "Economy", price: 14866.00 },
+            { provider: "Al Bait Guests for Pilgrims Services", category: "Economy", price: 15100.00 },
+            
+            // 5. Ithraa alkhair - Economy Focus
+            { provider: "Ithraa alkhair for pilgrims services", category: "Economy", price: 19999.69 },
+            { provider: "Ithraa alkhair for pilgrims services", category: "Economy", price: 18500.00 },
+            
+            // 6. Rifad Co - Economy Focus
+            { provider: "Rifad Co", category: "Economy", price: 20307.86 },
+            { provider: "Rifad Co", category: "Economy", price: 21500.00 },
+            
+            // 7. Dur Hospitality - Mid-Range / Hotel Focused
+            { provider: "Dur Hospitality company", category: "Mid-Range", price: 28000.00 },
+            { provider: "Dur Hospitality company", category: "Mid-Range", price: 27500.00 },
+
+            // 8. Flynas - Integrated (Mid-High Range)
+            { provider: "Flynas", category: "Premium Shifting", price: 32000.00 },
+
+            // 9. Ikram Aldeif Company for Tourism - Mid-Range
+            { provider: "Ikram Aldeif Company for Tourism", category: "Mid-Range", price: 29500.00 },
+            
+            // 10. Rawaf Mina Company for Pilgrimage Services - Mid-Range
+            { provider: "Rawaf Mina Company for Pilgrimage Services", category: "Mid-Range", price: 26000.00 },
+            
+            // 11. SEERA GROUP HOLDING - Integrated/Premium
+            { provider: "SEERA GROUP HOLDING", category: "Premium Shifting", price: 30500.00 },
+
+            // 12. YOSR ALMASHAER FOR HAJJ SERVICES - Mid-Range
+            { provider: "YOSR ALMASHAER FOR HAJJ SERVICES", category: "Mid-Range", price: 25000.00 },
+        ];
+
+        // --- Data Aggregation Logic ---
+        
+        const providerData = {};
+        allPackagesData.forEach(pkg => {
+            const name = pkg.provider;
+            if (!providerData[name]) {
+                providerData[name] = {
+                    count: 0,
+                    totalPrice: 0,
+                };
+            }
+            providerData[name].count++;
+            providerData[name].totalPrice += pkg.price;
+        });
+
+        // Prepare data for Chart.js
+        const labels = Object.keys(providerData);
+        const packageCounts = labels.map(label => providerData[label].count);
+        const averagePrices = labels.map(label => 
+            (providerData[label].totalPrice / providerData[label].count).toFixed(2)
+        );
+
+        // Define colors for 12 companies
+        const backgroundColors = [
+            '#1a73e8', // MCDC (Blue)
+            '#fbbc05', // Abdul Lateef Jameel (Yellow)
+            '#009688', // Rajhi (Teal)
+            '#34a853', // Al Bait Guests (Green)
+            '#ea4335', // Ithraa (Red)
+            '#9c27b0', // Rifad (Purple)
+            '#ff8f00', // Dur (Orange)
+            '#039be5', // Flynas (Light Blue)
+            '#c0ca33', // Ikram Aldeif (Lime)
+            '#607d8b', // Rawaf Mina (Grey)
+            '#e91e63', // SEERA (Pink)
+            '#795548', // YOSR ALMASHAER (Brown)
+        ];
+        
+        // --- Chart 1: Packages Distribution (Doughnut Chart) ---
+        const ctx1 = document.getElementById('packagesDistributionChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'عدد الباقات المعروضة',
+                    data: packageCounts,
+                    backgroundColor: backgroundColors,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            font: { family: 'Tajawal' }
+                        }
+                    },
+                    title: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // --- Chart 2: Average Price per Provider (Bar Chart) ---
+        const ctx2 = document.getElementById('averagePriceChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'متوسط السعر (ريال سعودي)',
+                    data: averagePrices,
+                    backgroundColor: backgroundColors,
+                    borderColor: backgroundColors.map(c => c.replace('0.8', '1')),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y', // Horizontal bars
+                plugins: {
+                    legend: { display: false },
+                    title: { display: false }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'متوسط السعر (ريال سعودي)',
+                            font: { family: 'Tajawal' }
+                        },
+                        ticks: {
+                            callback: function(value) { return value.toLocaleString('ar-SA'); },
+                            font: { family: 'Tajawal' }
+                        },
+                    },
+                    y: {
+                        ticks: { font: { family: 'Tajawal' } }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
